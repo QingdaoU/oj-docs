@@ -1,0 +1,184 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "Welcome to Online Judge\n\n\n\u76ee\u524d\u6b64\u5904\u7684\u6587\u6863\u5747\u4e3a\u672a\u516c\u5f00\u53d1\u5e03\u7248\u672c\u7684\uff0c\u6700\u65b0release\u7684\u7248\u672c\u8bf7\u53c2\u8003github\u3002\n\n\nhttps://github.com/QingdaoU", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/#welcome-to-online-judge", 
+            "text": "\u76ee\u524d\u6b64\u5904\u7684\u6587\u6863\u5747\u4e3a\u672a\u516c\u5f00\u53d1\u5e03\u7248\u672c\u7684\uff0c\u6700\u65b0release\u7684\u7248\u672c\u8bf7\u53c2\u8003github\u3002  https://github.com/QingdaoU", 
+            "title": "Welcome to Online Judge"
+        }, 
+        {
+            "location": "/judger/English/", 
+            "text": "Judger for OnlineJudge\n\n\nbuild\n\n\nsudo apt-get install libseccomp-dev\nmkdir build \n cd build \n cmake .. \n make \n sudo make install\n\n\n\n\nC API\n\n\n#include \nrunner.h\n then call \nrun\n function with \nstruct config\n and \nstruct result\n pointer.\n\n\nstruct config\n members\n\n\n\n\nmax_cpu_time\n (ms):  max cpu time this process can cost, -1 for unlimited\n\n\nmax_real_time\n (ms):  max time this process can run, -1 for unlimited\n\n\nmax_memory\n (byte):  max size of the process's virtual memory (address space), -1 for unlimited\n\n\nmax_process_number\n:  max number of child process this process can create (to avoid fork bomb), -1 for unlimited\n\n\nmax_output_size\n (byte):  max size of data this process can output to stdout, stderr and file, -1 for unlimited\n\n\nexe_path\n:  path of file to run\n\n\ninput_file\n:  redirect content of this file to process's stdin\n\n\noutput_file\n:  redirect process's stdout to this file\n\n\nerror_file\n:  redirect process's stderr to this file\n\n\nargs\n (string array terminated by NULL):  arguments to run this process\n\n\nenv\n (string array terminated by NULL):  environment variables this process can get\n\n\nlog_path\n:  judger log path\n\n\nseccomp_rule_so_path\n(string or NULL): seccomp rules used to limit process system calls\n\n\nuid\n:  user to run this process\n\n\ngid\n:  user group this process belongs to\n\n\n\n\nstruct result\n members\n\n\n\n\ncpu_time\n:  cpu time the process has used\n\n\nreal_time\n:  actual running time of the process\n\n\nsignal\n:  signal number\n\n\nexit_code\n:  process's exit code\n\n\nresult\n:  judger result, details in \nrunner.h\n\n\nerror\n:  args validation error or judger internal error, error code in \nrunner.h\n\n\n\n\nresult\n return value\n\n\n\n\nWRONG_ANSWER (judger module will never return this value, it's used for awswer checker)\n\n\nSUCCESS = 0 (this only means the process exited normally)\n\n\nCPU_TIME_LIMIT_EXCEEDED = 1 \n\n\nREAL_TIME_LIMIT_EXCEEDED = 2\n\n\nMEMORY_LIMIT_EXCEEDED = 3\n\n\nRUNTIME_ERROR = 4\n\n\nSYSTEM_ERROR = 5\n\n\n\n\nerror\n return value\n\n\n\n\nSUCCESS = 0\n\n\nINVALID_CONFIG = -1\n\n\nCLONE_FAILED = -2\n\n\nPTHREAD_FAILED = -3\n\n\nWAIT_FAILED = -4\n\n\nROOT_REQUIRED = -5\n\n\nLOAD_SECCOMP_FAILED = -6\n\n\nSETRLIMIT_FAILED = -7\n\n\nDUP2_FAILED = -8\n\n\nSETUID_FAILED = -9\n\n\nEXECVE_FAILED = -10\n\n\nSPJ_ERROR = -11 (judger module will never return this value, it's used for awswer checker)\n\n\n\n\nPython binding (Python 2.7 only)\n\n\nsudo python setup.py install\n\n\n\n\nPython demo\n\n\nArgs with string must be Python \nstr\n type\n\n\n import _judger\n\n _judger.VERSION\n\n[2, 0, 1]\n\n\n _judger.run(max_cpu_time=1000,\n...             max_real_time=2000,\n...             max_memory=1000000000,\n...             max_process_number=200,\n...             max_output_size=10000,\n...             # five args above can be _judger.UNLIMITED\n...             exe_path=\n/bin/echo\n,\n...             input_path=\n/dev/null\n,\n...             output_path=\necho.out\n,\n...             error_path=\necho.out\n,\n...             # can be empty list\n...             args=[\nHelloWorld\n],\n...             # can be empty list\n...             env=[\nfoo=bar\n],\n...             log_path=\njudger.log\n,\n...             # can be None\n...             seccomp_rule_so_path=\n/usr/lib/judger/librule_c_cpp.so\n,\n...             uid=0,\n...             gid=0)\n\n{'cpu_time': 0, 'signal': 0, 'memory': 4554752, 'exit_code': 0, 'result': 0, 'error': 0, 'real_time': 2}\n\n\n\n\nThere are six constants in the module you can use\n\n\n\n\nRESULT_SUCCESS\n\n\nRESULT_CPU_TIME_LIMIT_EXCEEDED\n\n\nRESULT_REAL_TIME_LIMIT_EXCEEDED\n\n\nRESULT_MEMORY_LIMIT_EXCEEDED\n\n\nRESULT_RUNTIME_ERROR\n\n\nRESULT_SYSTEM_ERROR\n\n\n\n\nRun tests\n\n\ncd tests \n  sudo python test.py\n\n\n\n\nNote\n\n\n\n\nLinux x64 and kernel version \n 3.17 required\n\n\nJudger security relies on Docker with default security config \nMore\n\n\nTested under Ubuntu 14.04 docker container. System calls may vary due to different system and kernel versions\n\n\nRoot user required to change uid / gid\n\n\nWhy use seccomp instead of ptrace? Ptrace can decrease process's performance significantly, for each system call, twice \n context switch between child process and parent process is needed.\n\n\nHow to custom seccomp rule? \nExample here\n, then reinstall jduger, your code will be compiled and installed under \n \n/usr/lib/judger\n\n\n\n\nLicense\n\n\nThe Star And Thank Author License (SATA)", 
+            "title": "API"
+        }, 
+        {
+            "location": "/judger/English/#judger-for-onlinejudge", 
+            "text": "", 
+            "title": "Judger for OnlineJudge"
+        }, 
+        {
+            "location": "/judger/English/#build", 
+            "text": "sudo apt-get install libseccomp-dev\nmkdir build   cd build   cmake ..   make   sudo make install", 
+            "title": "build"
+        }, 
+        {
+            "location": "/judger/English/#c-api", 
+            "text": "#include  runner.h  then call  run  function with  struct config  and  struct result  pointer.", 
+            "title": "C API"
+        }, 
+        {
+            "location": "/judger/English/#struct-config-members", 
+            "text": "max_cpu_time  (ms):  max cpu time this process can cost, -1 for unlimited  max_real_time  (ms):  max time this process can run, -1 for unlimited  max_memory  (byte):  max size of the process's virtual memory (address space), -1 for unlimited  max_process_number :  max number of child process this process can create (to avoid fork bomb), -1 for unlimited  max_output_size  (byte):  max size of data this process can output to stdout, stderr and file, -1 for unlimited  exe_path :  path of file to run  input_file :  redirect content of this file to process's stdin  output_file :  redirect process's stdout to this file  error_file :  redirect process's stderr to this file  args  (string array terminated by NULL):  arguments to run this process  env  (string array terminated by NULL):  environment variables this process can get  log_path :  judger log path  seccomp_rule_so_path (string or NULL): seccomp rules used to limit process system calls  uid :  user to run this process  gid :  user group this process belongs to", 
+            "title": "struct config members"
+        }, 
+        {
+            "location": "/judger/English/#struct-result-members", 
+            "text": "cpu_time :  cpu time the process has used  real_time :  actual running time of the process  signal :  signal number  exit_code :  process's exit code  result :  judger result, details in  runner.h  error :  args validation error or judger internal error, error code in  runner.h", 
+            "title": "struct result members"
+        }, 
+        {
+            "location": "/judger/English/#result-return-value", 
+            "text": "WRONG_ANSWER (judger module will never return this value, it's used for awswer checker)  SUCCESS = 0 (this only means the process exited normally)  CPU_TIME_LIMIT_EXCEEDED = 1   REAL_TIME_LIMIT_EXCEEDED = 2  MEMORY_LIMIT_EXCEEDED = 3  RUNTIME_ERROR = 4  SYSTEM_ERROR = 5", 
+            "title": "result return value"
+        }, 
+        {
+            "location": "/judger/English/#error-return-value", 
+            "text": "SUCCESS = 0  INVALID_CONFIG = -1  CLONE_FAILED = -2  PTHREAD_FAILED = -3  WAIT_FAILED = -4  ROOT_REQUIRED = -5  LOAD_SECCOMP_FAILED = -6  SETRLIMIT_FAILED = -7  DUP2_FAILED = -8  SETUID_FAILED = -9  EXECVE_FAILED = -10  SPJ_ERROR = -11 (judger module will never return this value, it's used for awswer checker)", 
+            "title": "error return value"
+        }, 
+        {
+            "location": "/judger/English/#python-binding-python-27-only", 
+            "text": "sudo python setup.py install", 
+            "title": "Python binding (Python 2.7 only)"
+        }, 
+        {
+            "location": "/judger/English/#python-demo", 
+            "text": "Args with string must be Python  str  type   import _judger  _judger.VERSION\n\n[2, 0, 1]  _judger.run(max_cpu_time=1000,\n...             max_real_time=2000,\n...             max_memory=1000000000,\n...             max_process_number=200,\n...             max_output_size=10000,\n...             # five args above can be _judger.UNLIMITED\n...             exe_path= /bin/echo ,\n...             input_path= /dev/null ,\n...             output_path= echo.out ,\n...             error_path= echo.out ,\n...             # can be empty list\n...             args=[ HelloWorld ],\n...             # can be empty list\n...             env=[ foo=bar ],\n...             log_path= judger.log ,\n...             # can be None\n...             seccomp_rule_so_path= /usr/lib/judger/librule_c_cpp.so ,\n...             uid=0,\n...             gid=0)\n\n{'cpu_time': 0, 'signal': 0, 'memory': 4554752, 'exit_code': 0, 'result': 0, 'error': 0, 'real_time': 2}  There are six constants in the module you can use   RESULT_SUCCESS  RESULT_CPU_TIME_LIMIT_EXCEEDED  RESULT_REAL_TIME_LIMIT_EXCEEDED  RESULT_MEMORY_LIMIT_EXCEEDED  RESULT_RUNTIME_ERROR  RESULT_SYSTEM_ERROR", 
+            "title": "Python demo"
+        }, 
+        {
+            "location": "/judger/English/#run-tests", 
+            "text": "cd tests    sudo python test.py", 
+            "title": "Run tests"
+        }, 
+        {
+            "location": "/judger/English/#note", 
+            "text": "Linux x64 and kernel version   3.17 required  Judger security relies on Docker with default security config  More  Tested under Ubuntu 14.04 docker container. System calls may vary due to different system and kernel versions  Root user required to change uid / gid  Why use seccomp instead of ptrace? Ptrace can decrease process's performance significantly, for each system call, twice \n context switch between child process and parent process is needed.  How to custom seccomp rule?  Example here , then reinstall jduger, your code will be compiled and installed under \n  /usr/lib/judger", 
+            "title": "Note"
+        }, 
+        {
+            "location": "/judger/English/#license", 
+            "text": "The Star And Thank Author License (SATA)", 
+            "title": "License"
+        }, 
+        {
+            "location": "/judge_server/English/", 
+            "text": "JudgeServer API\n\n\nPreparement\n\n\n\n\nX-Judge-Server-Token\n HTTP header is required for all requests, the value of this header is \nsha256(token)\n.\n\n\nType of request and response data is JSON.\n\n\nRequest method is \nPOST\n.\n\n\n\n\nFor all responses, \nerr\n and \ndata\n fields will be returned. \n\n\n\n\nIf the request is processed successfully, \nerr\n field will be \nnull\n, \ndata\n field will be the data returned. \n\n\nIf error occured while processing request, \nerr\n field will be error code, \ndata\n field will be the reason.\n\n\n\n\n\n\n\n\nGet system info\n\n\n\n\nURL \n/ping\n\n\n\n\nArgs\n\n\n\n\nDo not need args\n\n\n\n\nResponse\n\n\n{\n    \njudger_version\n: \n2.0.1\n,\n    \nhostname\n: \nd3765528134e\n,\n    // number of cpu cores, this value will determine the number of concurrent tasks\n    \ncpu_core\n: 1,\n    // usage of cpu and memory\n    \ncpu\n: 4.1,\n    \nmemory\n: 24.5\n}\n\n\n\n\nJudge (not for Special Judge)\n\n\n\n\nURL \n/judge\n\n\n\n\nArgs\n\n\n\n\nsrc\n: source code\n\n\nlanguage_config\n: refer to \nclient/Python/languages.py\n, do not need to modify generally\n\n\nsubmission_id\n: the only id of the submission, do not repeat\n\n\nmax_cpu_time\n: unit is ms\n\n\nmax_memory\n: unit is byte\n\n\ntest_case_id\n: used to get the test_case directory\n\n\n\n\nResponse\n\n\n[\n    // each object/dict is a test case file running result\n    {\n        \ncpu_time\n: 1,\n        // refer to the end of this document\n        \nresult\n: 0,\n        \nmemory\n: 12836864,\n        \nreal_time\n: 2,\n        \nsignal\n: 0,\n        \nerror\n: 0,\n        // refer to the end of this document\n        \nexit_code\n: 0,\n        \noutput_md5\n: \neccbc87e4b5ce2fe28308fd9f2a7baf3\n,\n        // test case file id\n        \ntest_case\n: 1\n    },\n    {\n        \ncpu_time\n: 1,\n        \nresult\n: 0,\n        \nmemory\n: 12849152,\n        \nreal_time\n: 1,\n        \nsignal\n: 0,\n        \nerror\n: 0,\n        \nexit_code\n: 0,\n        \noutput_md5\n: \neccbc87e4b5ce2fe28308fd9f2a7baf3\n,\n        \ntest_case\n: 2\n    }\n]\n\n\n\n\nWhen compilation is failed, following data will be returned\n\n\n{\n    \nerr\n: \nCompileError\n, \n    \ndata\n: \nerror resson\n\n}\n\n\n\n\nCompile Special Judge\n\n\n\n\nURL \n/compile_spj\n\n\n\n\nArgs\n\n\n\n\nsrc\n: special judge soure code\n\n\nspj_version\n: version of special judge, used to determine whether to recompile special judge\n\n\nspj_compile_config\n: refer to \nclient/Python/languages.py\n, do not need to modify generally\n\n\ntest_case_id\n\n\n\n\nResponse\n\n\nsuccess\n\n\n\n\n\nWhen compilation is failed, following data will be returned\n\n\n{\n    \nerr\n: \nSPJCompileError\n, \n    \ndata\n: \nerror resson\n\n}\n\n\n\n\nJudge (for Special Judge)\n\n\nSpecial Judge must be compiled before, refer to the above API\n\n\n\n\nURL \n/judge\n\n\n\n\nArgs\n\n\n\n\nsrc\n\n\nlanguage_config\n\n\nsubmission_id\n\n\nmax_cpu_time\n\n\nmax_memory\n\n\ntest_case_id\n\n\nspj_version\n\n\nspj_config\n, refer to \nclient/Python/languages.py\n, do not need to modify generally\n\n\n\n\nResponse\n\n\n[\n    {\n        \ncpu_time\n: 1,\n        \nresult\n: 0,\n        \nmemory\n: 12836864,\n        \nreal_time\n: 2,\n        \nsignal\n: 0,\n        \nerror\n: 0,\n        \nexit_code\n: 0,\n        \noutput_md5\n: None,\n        \ntest_case\n: 1\n    },\n    {\n        \ncpu_time\n: 1,\n        \nresult\n: 0,\n        \nmemory\n: 12849152,\n        \nreal_time\n: 1,\n        \nsignal\n: 0,\n        \nerror\n: 0,\n        \nexit_code\n: 0,\n        \noutput_md5\n: None,\n        \ntest_case\n: 2\n    }\n]\n\n\n\n\nWhen compilation is failed, following data will be returned\n\n\n{\n    \nerr\n: \nCompileError\n, \n    \ndata\n: \nerror reason\n\n}\n\n\n\n\nIf SPJ process crashed, \nresult = SYSTEM_ERROR\n and \nERROR = SPJ_ERROR\n is returned.\n\n\nresult\n field return value\n\n\n\n\nWRONG_ANSWER = -1 (this means the process exited normally, but the answer is wrong)\n\n\nSUCCESS = 0 (this means the answer is accepted)\n\n\nCPU_TIME_LIMIT_EXCEEDED = 1 \n\n\nREAL_TIME_LIMIT_EXCEEDED = 2\n\n\nMEMORY_LIMIT_EXCEEDED = 3\n\n\nRUNTIME_ERROR = 4\n\n\nSYSTEM_ERROR = 5\n\n\n\n\nerror\n field return value\n\n\n\n\nSUCCESS = 0\n\n\nINVALID_CONFIG = -1\n\n\nCLONE_FAILED = -2\n\n\nPTHREAD_FAILED = -3\n\n\nWAIT_FAILED = -4\n\n\nROOT_REQUIRED = -5\n\n\nLOAD_SECCOMP_FAILED = -6\n\n\nSETRLIMIT_FAILED = -7\n\n\nDUP2_FAILED = -8\n\n\nSETUID_FAILED = -9\n\n\nEXECVE_FAILED = -10\n\n\nSPJ_ERROR = -11", 
+            "title": "API"
+        }, 
+        {
+            "location": "/judge_server/English/#judgeserver-api", 
+            "text": "", 
+            "title": "JudgeServer API"
+        }, 
+        {
+            "location": "/judge_server/English/#preparement", 
+            "text": "X-Judge-Server-Token  HTTP header is required for all requests, the value of this header is  sha256(token) .  Type of request and response data is JSON.  Request method is  POST .   For all responses,  err  and  data  fields will be returned.    If the request is processed successfully,  err  field will be  null ,  data  field will be the data returned.   If error occured while processing request,  err  field will be error code,  data  field will be the reason.", 
+            "title": "Preparement"
+        }, 
+        {
+            "location": "/judge_server/English/#get-system-info", 
+            "text": "URL  /ping", 
+            "title": "Get system info"
+        }, 
+        {
+            "location": "/judge_server/English/#args", 
+            "text": "Do not need args", 
+            "title": "Args"
+        }, 
+        {
+            "location": "/judge_server/English/#response", 
+            "text": "{\n     judger_version :  2.0.1 ,\n     hostname :  d3765528134e ,\n    // number of cpu cores, this value will determine the number of concurrent tasks\n     cpu_core : 1,\n    // usage of cpu and memory\n     cpu : 4.1,\n     memory : 24.5\n}", 
+            "title": "Response"
+        }, 
+        {
+            "location": "/judge_server/English/#judge-not-for-special-judge", 
+            "text": "URL  /judge", 
+            "title": "Judge (not for Special Judge)"
+        }, 
+        {
+            "location": "/judge_server/English/#args_1", 
+            "text": "src : source code  language_config : refer to  client/Python/languages.py , do not need to modify generally  submission_id : the only id of the submission, do not repeat  max_cpu_time : unit is ms  max_memory : unit is byte  test_case_id : used to get the test_case directory", 
+            "title": "Args"
+        }, 
+        {
+            "location": "/judge_server/English/#response_1", 
+            "text": "[\n    // each object/dict is a test case file running result\n    {\n         cpu_time : 1,\n        // refer to the end of this document\n         result : 0,\n         memory : 12836864,\n         real_time : 2,\n         signal : 0,\n         error : 0,\n        // refer to the end of this document\n         exit_code : 0,\n         output_md5 :  eccbc87e4b5ce2fe28308fd9f2a7baf3 ,\n        // test case file id\n         test_case : 1\n    },\n    {\n         cpu_time : 1,\n         result : 0,\n         memory : 12849152,\n         real_time : 1,\n         signal : 0,\n         error : 0,\n         exit_code : 0,\n         output_md5 :  eccbc87e4b5ce2fe28308fd9f2a7baf3 ,\n         test_case : 2\n    }\n]  When compilation is failed, following data will be returned  {\n     err :  CompileError , \n     data :  error resson \n}", 
+            "title": "Response"
+        }, 
+        {
+            "location": "/judge_server/English/#compile-special-judge", 
+            "text": "URL  /compile_spj", 
+            "title": "Compile Special Judge"
+        }, 
+        {
+            "location": "/judge_server/English/#args_2", 
+            "text": "src : special judge soure code  spj_version : version of special judge, used to determine whether to recompile special judge  spj_compile_config : refer to  client/Python/languages.py , do not need to modify generally  test_case_id", 
+            "title": "Args"
+        }, 
+        {
+            "location": "/judge_server/English/#response_2", 
+            "text": "success   When compilation is failed, following data will be returned  {\n     err :  SPJCompileError , \n     data :  error resson \n}", 
+            "title": "Response"
+        }, 
+        {
+            "location": "/judge_server/English/#judge-for-special-judge", 
+            "text": "Special Judge must be compiled before, refer to the above API   URL  /judge", 
+            "title": "Judge (for Special Judge)"
+        }, 
+        {
+            "location": "/judge_server/English/#args_3", 
+            "text": "src  language_config  submission_id  max_cpu_time  max_memory  test_case_id  spj_version  spj_config , refer to  client/Python/languages.py , do not need to modify generally", 
+            "title": "Args"
+        }, 
+        {
+            "location": "/judge_server/English/#response_3", 
+            "text": "[\n    {\n         cpu_time : 1,\n         result : 0,\n         memory : 12836864,\n         real_time : 2,\n         signal : 0,\n         error : 0,\n         exit_code : 0,\n         output_md5 : None,\n         test_case : 1\n    },\n    {\n         cpu_time : 1,\n         result : 0,\n         memory : 12849152,\n         real_time : 1,\n         signal : 0,\n         error : 0,\n         exit_code : 0,\n         output_md5 : None,\n         test_case : 2\n    }\n]  When compilation is failed, following data will be returned  {\n     err :  CompileError , \n     data :  error reason \n}  If SPJ process crashed,  result = SYSTEM_ERROR  and  ERROR = SPJ_ERROR  is returned.", 
+            "title": "Response"
+        }, 
+        {
+            "location": "/judge_server/English/#result-field-return-value", 
+            "text": "WRONG_ANSWER = -1 (this means the process exited normally, but the answer is wrong)  SUCCESS = 0 (this means the answer is accepted)  CPU_TIME_LIMIT_EXCEEDED = 1   REAL_TIME_LIMIT_EXCEEDED = 2  MEMORY_LIMIT_EXCEEDED = 3  RUNTIME_ERROR = 4  SYSTEM_ERROR = 5", 
+            "title": "result field return value"
+        }, 
+        {
+            "location": "/judge_server/English/#error-field-return-value", 
+            "text": "SUCCESS = 0  INVALID_CONFIG = -1  CLONE_FAILED = -2  PTHREAD_FAILED = -3  WAIT_FAILED = -4  ROOT_REQUIRED = -5  LOAD_SECCOMP_FAILED = -6  SETRLIMIT_FAILED = -7  DUP2_FAILED = -8  SETUID_FAILED = -9  EXECVE_FAILED = -10  SPJ_ERROR = -11", 
+            "title": "error field return value"
+        }, 
+        {
+            "location": "/judge_server/English/deploy/", 
+            "text": "There are two methods to deplloy this server depending on the scene.\n\n\nContainers are in the same host and can be linked\n\n\nExample of \ndocker-compose.yml\n\n\noj_web_server:\n    environment:\n        - judger_token=SOME TOKEN\n    ports:\n        - \n0.0.0.0:8000:8080\n\n\njudge_server:\n    links:\n        - oj_web_server:oj_web_server\n    ports:\n        - \n127.0.0.1::8080\n\n\n\n\n\nWhen containers are linked, \njudge_server\n can get environment variable \nOJ_WEB_SERVER_ENV_judger_token\n as token\uff0c get \nOJ_WEB_SERVER_PORT_8080_TCP_ADDR\n as server ip\uff0c get \nOJ_WEB_SERVER_PORT_8080_TCP_PORT\n as server port. As a result, \njudge_server\n can send heartbeat request to \noj_web_server\n.\n\n\nContainers are deployed in multi hosts\n\n\nThree environment variables below must be set manully in \ndocker-compose.yml\n\n\n\n\nservice_discovery_url\n\n\njudger_token\n\n\nservice_url\n\n\n\n\njudge_server\n will send heartbeat request to \nservice_discovery_url\n.\n\n\nservice_url\n is used to tell server to send task to this url(\njudge_server\n).\n\n\nExample of \ndocker-compose.yml\n\n\njudge_server:\n    - environment\n        - judger_token=SOME TOKEN\n        - service_discovery_url=http://onlinejudge.com/api/judge_server\n        - service_url=http://1.2.3.4:8005\n    - ports:\n        - \n0.0.0.0:8005:8080\n\n\n\n\n\nheartbeat request\n\n\n\n\nMethod \nPOST\n\n\nX-JUDGE-SERVER-TOKEN\n: \nsha256(token)\n\n\nContent-Type\n: \napplication/json\n\n\n\n\nRequest data\n\n\n {\n    \njudger_version\n: \n2.0.1\n,\n    \nhostname\n: \nc45acd557074\n,\n    \ncpu_core\n: 1,\n    \nmemory\n: 30.3,\n    \naction\n: \nheartbeat\n,\n    \ncpu\n: 0,\n    \nservice_url\n: null or \nhttp://1.2.3.4:8005\n\n}\n\n\n\n\nIf everything is OK, you should give a JSON response as follows\n\n\n{\n    \ndata\n: \nsuccess\n,\n    \nerr\n: null\n}", 
+            "title": "Deploy"
+        }, 
+        {
+            "location": "/judge_server/English/deploy/#containers-are-in-the-same-host-and-can-be-linked", 
+            "text": "Example of  docker-compose.yml  oj_web_server:\n    environment:\n        - judger_token=SOME TOKEN\n    ports:\n        -  0.0.0.0:8000:8080 \n\njudge_server:\n    links:\n        - oj_web_server:oj_web_server\n    ports:\n        -  127.0.0.1::8080   When containers are linked,  judge_server  can get environment variable  OJ_WEB_SERVER_ENV_judger_token  as token\uff0c get  OJ_WEB_SERVER_PORT_8080_TCP_ADDR  as server ip\uff0c get  OJ_WEB_SERVER_PORT_8080_TCP_PORT  as server port. As a result,  judge_server  can send heartbeat request to  oj_web_server .", 
+            "title": "Containers are in the same host and can be linked"
+        }, 
+        {
+            "location": "/judge_server/English/deploy/#containers-are-deployed-in-multi-hosts", 
+            "text": "Three environment variables below must be set manully in  docker-compose.yml   service_discovery_url  judger_token  service_url   judge_server  will send heartbeat request to  service_discovery_url .  service_url  is used to tell server to send task to this url( judge_server ).  Example of  docker-compose.yml  judge_server:\n    - environment\n        - judger_token=SOME TOKEN\n        - service_discovery_url=http://onlinejudge.com/api/judge_server\n        - service_url=http://1.2.3.4:8005\n    - ports:\n        -  0.0.0.0:8005:8080", 
+            "title": "Containers are deployed in multi hosts"
+        }, 
+        {
+            "location": "/judge_server/English/deploy/#heartbeat-request", 
+            "text": "Method  POST  X-JUDGE-SERVER-TOKEN :  sha256(token)  Content-Type :  application/json   Request data   {\n     judger_version :  2.0.1 ,\n     hostname :  c45acd557074 ,\n     cpu_core : 1,\n     memory : 30.3,\n     action :  heartbeat ,\n     cpu : 0,\n     service_url : null or  http://1.2.3.4:8005 \n}  If everything is OK, you should give a JSON response as follows  {\n     data :  success ,\n     err : null\n}", 
+            "title": "heartbeat request"
+        }
+    ]
+}
