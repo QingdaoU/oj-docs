@@ -1,0 +1,16 @@
+pages:
+- Home: index.md
+- Judger:
+  - English:
+    - API: Judger/English/index.md
+- JudgeServer:
+  - English:
+    - API: JudgeServer/English/index.md
+    - Deploy: JudgeServer/English/deploy.md
+  - 中文:
+    - API: JudgeServer/Chinese/index.md
+    - 部署: JudgeServer/Chinese/deploy.md
+docs_dir: src
+site_dir: docs
+site_name: Online Judge Docs
+theme: yeti

@@ -1,7 +1,4 @@
-# 中文版本
-
-[链接](Chinese)
-
-# English Version
-
-[link](English)
+# Table of contents
+ - Judger 
+     - English 
+         - [API](/Judger/English/)
