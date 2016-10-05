@@ -1,0 +1,4 @@
+*.pyc
+mkdocs.yml
+src/index.md
+
