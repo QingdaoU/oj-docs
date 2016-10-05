@@ -12,6 +12,12 @@
     
         
     <url>
+     <loc>None/Judger/</loc>
+     <lastmod>2016-10-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>None</loc>
      <lastmod></lastmod>
      <changefreq>daily</changefreq>
@@ -20,6 +26,18 @@
     
 
     
+        
+    <url>
+     <loc>None/JudgeServer/</loc>
+     <lastmod>2016-10-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None</loc>
+     <lastmod></lastmod>
+     <changefreq>daily</changefreq>
+    </url>
         
     <url>
      <loc>None</loc>

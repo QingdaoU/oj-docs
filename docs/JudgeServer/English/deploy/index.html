@@ -7,14 +7,14 @@
         
         
         
-        <link rel="shortcut icon" href="./img/favicon.ico">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-	<title>Online Judge Docs</title>
+	<title>Deploy - Online Judge Docs</title>
 
-        <link href="./css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="./css/font-awesome-4.0.3.css" rel="stylesheet">
-        <link rel="stylesheet" href="./css/highlight.css">
-        <link href="./css/base.css" rel="stylesheet">
+        <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../../css/highlight.css">
+        <link href="../../../css/base.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -41,7 +41,7 @@
             </button>
 
             <!-- Main title -->
-            <a class="navbar-brand" href=".">Online Judge Docs</a>
+            <a class="navbar-brand" href="../../..">Online Judge Docs</a>
         </div>
 
         <!-- Expanded navigation -->
@@ -50,8 +50,8 @@
             <ul class="nav navbar-nav">
             
             
-                <li class="active">
-                    <a href=".">Home</a>
+                <li >
+                    <a href="../../..">Home</a>
                 </li>
             
             
@@ -62,7 +62,7 @@
                     
                         
 <li >
-    <a href="Judger/">index</a>
+    <a href="../../../Judger/">index</a>
 </li>
 
                     
@@ -73,7 +73,7 @@
         
             
 <li >
-    <a href="Judger/English/">API</a>
+    <a href="../../../Judger/English/">API</a>
 </li>
 
         
@@ -86,13 +86,13 @@
             
             
             
-                <li class="dropdown">
+                <li class="dropdown active">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">JudgeServer <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                     
                         
 <li >
-    <a href="JudgeServer/">index</a>
+    <a href="../../">index</a>
 </li>
 
                     
@@ -103,13 +103,13 @@
         
             
 <li >
-    <a href="JudgeServer/English/">API</a>
+    <a href="../">API</a>
 </li>
 
         
             
-<li >
-    <a href="JudgeServer/English/deploy/">Deploy</a>
+<li class="active">
+    <a href="./">Deploy</a>
 </li>
 
         
@@ -124,13 +124,13 @@
         
             
 <li >
-    <a href="JudgeServer/Chinese/">API</a>
+    <a href="../../Chinese/">API</a>
 </li>
 
         
             
 <li >
-    <a href="JudgeServer/Chinese/deploy/">部署</a>
+    <a href="../../Chinese/deploy/">部署</a>
 </li>
 
         
@@ -151,13 +151,13 @@
                         <i class="fa fa-search"></i> Search
                     </a>
                 </li>
-                <li class="disabled">
-                    <a rel="next" >
+                <li >
+                    <a rel="next" href="../">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="Judger/">
+                    <a rel="prev" href="../../Chinese/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -171,39 +171,79 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#welcome-to-online-judge">Welcome to Online Judge</a></li>
+        <li class="main active"><a href="#containers-are-in-the-same-host-and-can-be-linked">Containers are in the same host and can be linked</a></li>
+        
+    
+        <li class="main "><a href="#containers-are-deployed-in-multi-hosts">Containers are deployed in multi hosts</a></li>
+        
+    
+        <li class="main "><a href="#heartbeat-request">heartbeat request</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="welcome-to-online-judge">Welcome to Online Judge</h1>
-<p>目前此处的文档均为未公开发布版本的，最新release的版本请参考github。</p>
-<p>https://github.com/QingdaoU</p>
+<p>There are two methods to deplloy this server depending on the scene.</p>
+<h1 id="containers-are-in-the-same-host-and-can-be-linked">Containers are in the same host and can be linked</h1>
+<p>Example of <code>docker-compose.yml</code></p>
+<pre><code class="yml">oj_web_server:
+    environment:
+        - judger_token=SOME TOKEN
+    ports:
+        - &quot;0.0.0.0:8000:8080&quot;
+
+judge_server:
+    links:
+        - oj_web_server:oj_web_server
+    ports:
+        - &quot;127.0.0.1::8080&quot;
+</code></pre>
+
+<p>When containers are linked, <code>judge_server</code> can get environment variable <code>OJ_WEB_SERVER_ENV_judger_token</code> as token， get <code>OJ_WEB_SERVER_PORT_8080_TCP_ADDR</code> as server ip， get <code>OJ_WEB_SERVER_PORT_8080_TCP_PORT</code> as server port. As a result, <code>judge_server</code> can send heartbeat request to <code>oj_web_server</code>.</p>
+<h1 id="containers-are-deployed-in-multi-hosts">Containers are deployed in multi hosts</h1>
+<p>Three environment variables below must be set manully in <code>docker-compose.yml</code></p>
 <ul>
-<li><a href="./">Home</a></li>
-<li>Judger <ul>
-<li>English <ul>
-<li><a href="./Judger/English/">API</a></li>
+<li><code>service_discovery_url</code></li>
+<li><code>judger_token</code></li>
+<li><code>service_url</code></li>
 </ul>
-</li>
+<p><code>judge_server</code> will send heartbeat request to <code>service_discovery_url</code>.</p>
+<p><code>service_url</code> is used to tell server to send task to this url(<code>judge_server</code>).</p>
+<p>Example of <code>docker-compose.yml</code></p>
+<pre><code class="yml">judge_server:
+    - environment
+        - judger_token=SOME TOKEN
+        - service_discovery_url=http://onlinejudge.com/api/judge_server
+        - service_url=http://1.2.3.4:8005
+    - ports:
+        - &quot;0.0.0.0:8005:8080&quot;
+</code></pre>
+
+<h1 id="heartbeat-request">heartbeat request</h1>
+<ul>
+<li>Method <code>POST</code></li>
+<li><code>X-JUDGE-SERVER-TOKEN</code>: <code>sha256(token)</code></li>
+<li><code>Content-Type</code>: <code>application/json</code></li>
 </ul>
-</li>
-<li>JudgeServer <ul>
-<li>English <ul>
-<li><a href="./JudgeServer/English/">API</a></li>
-<li><a href="./JudgeServer/English/deploy">Deploy</a></li>
-</ul>
-</li>
-<li>中文 <ul>
-<li><a href="./JudgeServer/Chinese/">API</a></li>
-<li><a href="./JudgeServer/Chinese/deploy">部署</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul></div>
+<p>Request data</p>
+<pre><code class="js"> {
+    &quot;judger_version&quot;: &quot;2.0.1&quot;,
+    &quot;hostname&quot;: &quot;c45acd557074&quot;,
+    &quot;cpu_core&quot;: 1,
+    &quot;memory&quot;: 30.3,
+    &quot;action&quot;: &quot;heartbeat&quot;,
+    &quot;cpu&quot;: 0,
+    &quot;service_url&quot;: null or &quot;http://1.2.3.4:8005&quot;
+}
+</code></pre>
+
+<p>If everything is OK, you should give a JSON response as follows</p>
+<pre><code class="js">{
+    &quot;data&quot;: &quot;success&quot;,
+    &quot;err&quot;: null
+}
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
@@ -212,12 +252,12 @@
             <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
         </footer>
 
-        <script src="./js/jquery-1.10.2.min.js"></script>
-        <script src="./js/bootstrap-3.0.3.min.js"></script>
-        <script src="./js/highlight.pack.js"></script>
-        <script>var base_url = '.';</script>
-        <script data-main="./mkdocs/js/search.js" src="./mkdocs/js/require.js"></script>
-        <script src="./js/base.js"></script>
+        <script src="../../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../../js/highlight.pack.js"></script>
+        <script>var base_url = '../../..';</script>
+        <script data-main="../../../mkdocs/js/search.js" src="../../../mkdocs/js/require.js"></script>
+        <script src="../../../js/base.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
             <div class="modal-dialog">
