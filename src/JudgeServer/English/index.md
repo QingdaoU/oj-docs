@@ -142,7 +142,7 @@ Special Judge must be compiled before, refer to the above API
         "signal": 0,
         "error": 0,
         "exit_code": 0,
-        "output_md5": None,
+        "output_md5": null,
         "test_case": 1
     },
     {
@@ -153,7 +153,7 @@ Special Judge must be compiled before, refer to the above API
         "signal": 0,
         "error": 0,
         "exit_code": 0,
-        "output_md5": None,
+        "output_md5": null,
         "test_case": 2
     }
 ]

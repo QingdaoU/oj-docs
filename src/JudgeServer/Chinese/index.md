@@ -147,7 +147,7 @@
         "signal": 0,
         "error": 0,
         "exit_code": 0,
-        "output_md5": None,
+        "output_md5": null,
         // 测试用例id
         "test_case": 1
     },
@@ -159,7 +159,7 @@
         "signal": 0,
         "error": 0,
         "exit_code": 0,
-        "output_md5": None,
+        "output_md5": null,
         "test_case": 2
     }
 ]
