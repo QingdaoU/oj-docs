@@ -25,7 +25,7 @@ mkdir build && cd build && cmake .. && make && sudo make install
  - `args` (string array terminated by NULL):  arguments to run this process
  - `env` (string array terminated by NULL):  environment variables this process can get
  - `log_path`:  judger log path
- - `seccomp_rule_so_path`(string or NULL): seccomp rules used to limit process system calls
+ - `seccomp_rule_name`(string or NULL): seccomp rules used to limit process system calls. Name is used to call corresponding functions.
  - `uid`:  user to run this process
  - `gid`:  user group this process belongs to
  
@@ -94,7 +94,7 @@ Args with string must be Python `str` type
 ...             env=["foo=bar"],
 ...             log_path="judger.log",
 ...             # can be None
-...             seccomp_rule_so_path="/usr/lib/judger/librule_c_cpp.so",
+...             seccomp_rule_name="c_cpp",
 ...             uid=0,
 ...             gid=0)
 
@@ -125,9 +125,10 @@ cd tests &&  sudo python test.py
  - Root user required to change uid / gid
  - Why use seccomp instead of ptrace? Ptrace can decrease process's performance significantly, for each system call, twice 
  context switch between child process and parent process is needed.
- - How to custom seccomp rule? [Example here](https://github.com/QingdaoU/Judger/blob/newnew/src/rules/c_cpp/rule.c), then reinstall jduger, your code will be compiled and installed under 
- `/usr/lib/judger`
+ - How to custom seccomp rule? [Example here](https://github.com/QingdaoU/Judger/blob/newnew/src/rules/c_cpp.c).
  
 ## License
 
   The Star And Thank Author License (SATA)
+
+

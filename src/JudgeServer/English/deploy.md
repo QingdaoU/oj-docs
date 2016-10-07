@@ -44,7 +44,7 @@ judge_server:
         - "0.0.0.0:8005:8080"
 ```
 
-# heartbeat request
+# Heartbeat request
 
  - Method `POST`
  - `X-JUDGE-SERVER-TOKEN`: `sha256(token)`

@@ -23,7 +23,8 @@
     "cpu_core": 1,
     // cpu和内存使用率，百分比
     "cpu": 4.1,
-    "memory": 24.5
+    "memory": 24.5,
+    "action": "pong"
 }
 ```
 
@@ -36,7 +37,6 @@
  
   - src，源码
   - language_config，参考`languages.py`中，一般不需要修改
-  - submission_id，这个提交唯一的id，请不要出现重复，比如使用时间戳也是不推荐的
   - max_cpu_time，单位毫秒
   - max_memory，最大内存，单位字节
   - test_case_id，用于找到存放有测试用例的文件夹
@@ -123,7 +123,6 @@
  
   - src
   - language_config
-  - submission_id
   - max_cpu_time
   - max_memory
   - test_case_id

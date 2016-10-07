@@ -28,7 +28,8 @@
     "cpu_core": 1,
     // usage of cpu and memory
     "cpu": 4.1,
-    "memory": 24.5
+    "memory": 24.5,
+    "action": "pong"
 }
 ```
 
@@ -40,7 +41,6 @@
  
   - `src`: source code
   - `language_config`: refer to `client/Python/languages.py`, do not need to modify generally
-  - `submission_id`: the only id of the submission, do not repeat
   - `max_cpu_time`: unit is ms
   - `max_memory`: unit is byte
   - `test_case_id`: used to get the test_case directory
@@ -123,7 +123,6 @@ Special Judge must be compiled before, refer to the above API
  
   - `src`
   - `language_config`
-  - `submission_id`
   - `max_cpu_time`
   - `max_memory`
   - `test_case_id`
