@@ -115,8 +115,6 @@ When compilation is failed, following data will be returned
 
 # Judge (for Special Judge)
 
-Special Judge must be compiled before, refer to the above API
-
  - URL `/judge`
 
 ## Args
@@ -128,6 +126,8 @@ Special Judge must be compiled before, refer to the above API
   - `test_case_id`
   - `spj_version`
   - `spj_config`, refer to `client/Python/languages.py`, do not need to modify generally
+  - `spj_compile_config`: refer to `client/Python/languages.py`, do not need to modify generally
+  - `spj_src`
 
 ## Response
   

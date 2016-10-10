@@ -117,27 +117,6 @@
   </li>
 
                     
-                        
-  <li class="dropdown-submenu">
-    <a tabindex="-1" href="">中文</a>
-    <ul class="dropdown-menu">
-        
-            
-<li >
-    <a href="../Chinese/">API</a>
-</li>
-
-        
-            
-<li >
-    <a href="../Chinese/deploy/">部署</a>
-</li>
-
-        
-    </ul>
-  </li>
-
-                    
                     </ul>
                 </li>
             
@@ -322,7 +301,6 @@
 </code></pre>
 
 <h1 id="judge-for-special-judge">Judge (for Special Judge)</h1>
-<p>Special Judge must be compiled before, refer to the above API</p>
 <ul>
 <li>URL <code>/judge</code></li>
 </ul>
@@ -335,6 +313,8 @@
 <li><code>test_case_id</code></li>
 <li><code>spj_version</code></li>
 <li><code>spj_config</code>, refer to <code>client/Python/languages.py</code>, do not need to modify generally</li>
+<li><code>spj_compile_config</code>: refer to <code>client/Python/languages.py</code>, do not need to modify generally</li>
+<li><code>spj_src</code></li>
 </ul>
 <h2 id="response_3">Response</h2>
 <pre><code class="js">[
