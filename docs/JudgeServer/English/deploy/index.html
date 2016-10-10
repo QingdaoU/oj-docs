@@ -150,37 +150,17 @@
             <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#containers-are-in-the-same-host-and-can-be-linked">Containers are in the same host and can be linked</a></li>
-        
-    
-        <li class="main "><a href="#containers-are-deployed-in-multi-hosts">Containers are deployed in multi hosts</a></li>
-        
-    
-        <li class="main "><a href="#heartbeat-request">Heartbeat request</a></li>
+        <li class="main active"><a href="#heartbeat-request">Heartbeat request</a></li>
         
     
     </ul>
 </div></div>
             <div class="col-md-9" role="main">
 
-<p>There are two methods to deplloy this server depending on the scene.</p>
-<h1 id="containers-are-in-the-same-host-and-can-be-linked">Containers are in the same host and can be linked</h1>
-<p>Example of <code>docker-compose.yml</code></p>
-<pre><code class="yml">oj_web_server:
-    environment:
-        - judger_token=SOME TOKEN
-    ports:
-        - &quot;0.0.0.0:8000:8080&quot;
-
-judge_server:
-    links:
-        - oj_web_server:oj_web_server
-    ports:
-        - &quot;127.0.0.1::8080&quot;
-</code></pre>
-
-<p>When containers are linked, <code>judge_server</code> can get environment variable <code>OJ_WEB_SERVER_ENV_judger_token</code> as token， get <code>OJ_WEB_SERVER_PORT_8080_TCP_ADDR</code> as server ip， get <code>OJ_WEB_SERVER_PORT_8080_TCP_PORT</code> as server port. As a result, <code>judge_server</code> can send heartbeat request to <code>oj_web_server</code>.</p>
-<h1 id="containers-are-deployed-in-multi-hosts">Containers are deployed in multi hosts</h1>
+<ul>
+<li>docker &gt;= 1.12</li>
+<li>docker-compose &gt;= 1.8</li>
+</ul>
 <p>Three environment variables below must be set manully in <code>docker-compose.yml</code></p>
 <ul>
 <li><code>service_discovery_url</code></li>
@@ -190,13 +170,26 @@ judge_server:
 <p><code>judge_server</code> will send heartbeat request to <code>service_discovery_url</code>.</p>
 <p><code>service_url</code> is used to tell server to send task to this url(<code>judge_server</code>).</p>
 <p>Example of <code>docker-compose.yml</code></p>
-<pre><code class="yml">judge_server:
-    - environment
-        - judger_token=SOME TOKEN
-        - service_discovery_url=http://onlinejudge.com/api/judge_server
-        - service_url=http://1.2.3.4:8005
-    - ports:
-        - &quot;0.0.0.0:8005:8080&quot;
+<pre><code class="yml">version: &quot;2&quot;
+services:
+    judge_server:
+        image: judge_server
+        cpu_quota: 90000
+        read_only: true
+        tmpfs:
+            - /tmp
+            - /judger_run
+            - /spj
+        volumes:
+            - /data/JudgeServer/tests/test_case:/test_case:ro
+            - /data/log:/log
+            - /data/JudgeServer:/code:ro
+        environment:
+            - judger_token=token
+            - service_discovery_url=https://onlinejudge.me/service
+            - service_url=http://1.2.3.4:12358
+        ports:
+            - &quot;0.0.0.0:12358:8080&quot;
 </code></pre>
 
 <h1 id="heartbeat-request">Heartbeat request</h1>
