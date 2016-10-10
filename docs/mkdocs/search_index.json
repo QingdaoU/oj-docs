@@ -2,12 +2,12 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Welcome to Online Judge\n\n\n\u76ee\u524d\u6b64\u5904\u7684\u6587\u6863\u5747\u4e3a\u672a\u516c\u5f00\u53d1\u5e03\u7248\u672c\u7684\uff0c\u6700\u65b0release\u7684\u7248\u672c\u8bf7\u53c2\u8003github\u3002\n\n\nhttps://github.com/QingdaoU\n\n\n\n\nHome\n\n\nJudger \n\n\nEnglish \n\n\nAPI\n\n\n\n\n\n\n\n\n\n\nJudgeServer \n\n\nEnglish \n\n\nAPI\n\n\nDeploy\n\n\n\n\n\n\n\u4e2d\u6587 \n\n\nAPI\n\n\n\u90e8\u7f72", 
+            "text": "Welcome to Online Judge\n\n\n\u76ee\u524d\u6b64\u5904\u7684\u6587\u6863\u5747\u4e3a\u672a\u516c\u5f00\u53d1\u5e03\u7248\u672c\u7684\uff0c\u6700\u65b0release\u7684\u7248\u672c\u8bf7\u53c2\u8003github\u3002\n\n\nhttps://github.com/QingdaoU\n\n\n\n\nHome\n\n\nJudger \n\n\nEnglish \n\n\nAPI\n\n\n\n\n\n\n\n\n\n\nJudgeServer \n\n\nEnglish \n\n\nAPI\n\n\nDeploy", 
             "title": "Home"
         }, 
         {
             "location": "/#welcome-to-online-judge", 
-            "text": "\u76ee\u524d\u6b64\u5904\u7684\u6587\u6863\u5747\u4e3a\u672a\u516c\u5f00\u53d1\u5e03\u7248\u672c\u7684\uff0c\u6700\u65b0release\u7684\u7248\u672c\u8bf7\u53c2\u8003github\u3002  https://github.com/QingdaoU   Home  Judger   English   API      JudgeServer   English   API  Deploy    \u4e2d\u6587   API  \u90e8\u7f72", 
+            "text": "\u76ee\u524d\u6b64\u5904\u7684\u6587\u6863\u5747\u4e3a\u672a\u516c\u5f00\u53d1\u5e03\u7248\u672c\u7684\uff0c\u6700\u65b0release\u7684\u7248\u672c\u8bf7\u53c2\u8003github\u3002  https://github.com/QingdaoU   Home  Judger   English   API      JudgeServer   English   API  Deploy", 
             "title": "Welcome to Online Judge"
         }, 
         {
@@ -87,12 +87,12 @@
         }, 
         {
             "location": "/JudgeServer/", 
-            "text": "Table of contents\n\n\n\n\nJudgeServer \n\n\nEnglish \n\n\nAPI\n\n\nDeploy\n\n\n\n\n\n\n\u4e2d\u6587 \n\n\nAPI\n\n\n\u90e8\u7f72", 
+            "text": "Table of contents\n\n\n\n\nJudgeServer \n\n\nEnglish \n\n\nAPI\n\n\nDeploy", 
             "title": "index"
         }, 
         {
             "location": "/JudgeServer/#table-of-contents", 
-            "text": "JudgeServer   English   API  Deploy    \u4e2d\u6587   API  \u90e8\u7f72", 
+            "text": "JudgeServer   English   API  Deploy", 
             "title": "Table of contents"
         }, 
         {
