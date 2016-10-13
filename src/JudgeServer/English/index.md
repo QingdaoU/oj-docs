@@ -44,6 +44,7 @@
   - `max_cpu_time`: unit is ms
   - `max_memory`: unit is byte
   - `test_case_id`: used to get the test_case directory
+  - `output`: if this value is `true`, then user's output is returned else `null` is returned. You can use this to debug your solution
 
 ## Response
   
@@ -128,6 +129,7 @@ When compilation is failed, following data will be returned
   - `spj_config`, refer to `client/Python/languages.py`, do not need to modify generally
   - `spj_compile_config`: refer to `client/Python/languages.py`, do not need to modify generally
   - `spj_src`
+  - `output`
 
 ## Response
   
