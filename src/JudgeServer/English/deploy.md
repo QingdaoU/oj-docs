@@ -11,7 +11,7 @@ Three environment variables below must be set manully in `docker-compose.yml`
   - `judger_token`
   - `service_url`
 
-`judge_server` will send heartbeat request to `service_discovery_url`.
+`judge_server` will send heartbeat request to `service_discovery_url` every five seconds.
   
 `service_url` is used to tell server to send task to this url(`judge_server`).
 
@@ -24,17 +24,24 @@ services:
         image: judge_server
         cpu_quota: 90000
         read_only: true
+        cap_drop:
+            - SETPCAP
+            - MKNOD
+            - NET_BIND_SERVICE
+            - SYS_CHROOT
+            - SETFCAP
+            - FSETID
         tmpfs:
             - /tmp
-            - /judger_run
-            - /spj
+            - /judger_run:exec,mode=777
+            - /spj:exec,mode=777
         volumes:
             - /data/JudgeServer/tests/test_case:/test_case:ro
             - /data/log:/log
             - /data/JudgeServer:/code:ro
         environment:
             - judger_token=token
-            - service_discovery_url=https://onlinejudge.me/service
+            - service_discovery_url=https://virusdefender.net/service.php
             - service_url=http://1.2.3.4:12358
         ports:
             - "0.0.0.0:12358:8080"
@@ -42,7 +49,7 @@ services:
 
 # Heartbeat request
 
-  - Method `POST`
+  - `Method`: `POST`
   - `X-JUDGE-SERVER-TOKEN`: `sha256(token)`
   - `Content-Type`: `application/json`
 

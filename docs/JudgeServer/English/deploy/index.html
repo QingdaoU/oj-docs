@@ -172,7 +172,7 @@
 <li><code>judger_token</code></li>
 <li><code>service_url</code></li>
 </ul>
-<p><code>judge_server</code> will send heartbeat request to <code>service_discovery_url</code>.</p>
+<p><code>judge_server</code> will send heartbeat request to <code>service_discovery_url</code> every five seconds.</p>
 <p><code>service_url</code> is used to tell server to send task to this url(<code>judge_server</code>).</p>
 <p>Example of <code>docker-compose.yml</code></p>
 <pre><code class="yml">version: &quot;2&quot;
@@ -181,17 +181,24 @@ services:
         image: judge_server
         cpu_quota: 90000
         read_only: true
+        cap_drop:
+            - SETPCAP
+            - MKNOD
+            - NET_BIND_SERVICE
+            - SYS_CHROOT
+            - SETFCAP
+            - FSETID
         tmpfs:
             - /tmp
-            - /judger_run
-            - /spj
+            - /judger_run:exec,mode=777
+            - /spj:exec,mode=777
         volumes:
             - /data/JudgeServer/tests/test_case:/test_case:ro
             - /data/log:/log
             - /data/JudgeServer:/code:ro
         environment:
             - judger_token=token
-            - service_discovery_url=https://onlinejudge.me/service
+            - service_discovery_url=https://virusdefender.net/service.php
             - service_url=http://1.2.3.4:12358
         ports:
             - &quot;0.0.0.0:12358:8080&quot;
@@ -199,7 +206,7 @@ services:
 
 <h1 id="heartbeat-request">Heartbeat request</h1>
 <ul>
-<li>Method <code>POST</code></li>
+<li><code>Method</code>: <code>POST</code></li>
 <li><code>X-JUDGE-SERVER-TOKEN</code>: <code>sha256(token)</code></li>
 <li><code>Content-Type</code>: <code>application/json</code></li>
 </ul>

@@ -50,7 +50,7 @@ mkdir build && cd build && cmake .. && make && sudo make install
 ### `error` return value
   - SUCCESS = 0
   - INVALID_CONFIG = -1
-  - CLONE_FAILED = -2
+  - FORK_FAILED = -2
   - PTHREAD_FAILED = -3
   - WAIT_FAILED = -4
   - ROOT_REQUIRED = -5
