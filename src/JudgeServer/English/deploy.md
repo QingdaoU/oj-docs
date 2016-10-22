@@ -60,6 +60,7 @@ Request data
  {
     "judger_version": "2.0.1",
     "hostname": "c45acd557074",
+    "running_task_number": 2,
     "cpu_core": 1,
     "memory": 30.3,
     "action": "heartbeat",
