@@ -10,10 +10,11 @@ def one(item, depth=0, result=""):
     for k, v in item.iteritems():
         if isinstance(v, basestring):
             if v.endswith("index.md"):
-                v = v[:-7]
+                v = v[:-8]
             if v.endswith(".md"):
                 v = v[:-3]
             result += " ".join([" " * depth, "-", "[" + k + "](/" + v + ")\n"])
+            print v, result
         elif isinstance(v, list):
             result += " ".join([" " * depth, "-", k, "\n"])
             for v_item in v:

@@ -289,7 +289,7 @@ mkdir build &amp;&amp; cd build &amp;&amp; cmake .. &amp;&amp; make &amp;&amp; s
 <h2 id="note">Note</h2>
 <ul>
 <li>Linux x64 and kernel version &gt; 3.17 required</li>
-<li>Judger security relies on Docker with default security config <a href="./todo">More</a></li>
+<li>Judger security relies on Docker with default security config <a href="https://github.com/QingdaoU/JudgeServer/blob/master/docker-compose.example.yml">More</a></li>
 <li>Tested under Ubuntu 14.04 docker container. System calls may vary due to different system and kernel versions</li>
 <li>Root user required to change uid / gid</li>
 <li>Why use seccomp instead of ptrace? Ptrace can decrease process's performance significantly, for each system call, twice 

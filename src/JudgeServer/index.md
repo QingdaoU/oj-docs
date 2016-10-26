@@ -1,6 +1,6 @@
 # Table of contents
  - JudgeServer 
      - English 
-         - [API](/JudgeServer/English/i)
+         - [API](/JudgeServer/English/)
          - [TestCase](/JudgeServer/English/testcase)
          - [Deploy](/JudgeServer/English/deploy)

@@ -120,7 +120,7 @@ cd tests &&  sudo python test.py
 ## Note
 
  - Linux x64 and kernel version > 3.17 required
- - Judger security relies on Docker with default security config [More](todo)
+ - Judger security relies on Docker with default security config [More](https://github.com/QingdaoU/JudgeServer/blob/master/docker-compose.example.yml)
  - Tested under Ubuntu 14.04 docker container. System calls may vary due to different system and kernel versions
  - Root user required to change uid / gid
  - Why use seccomp instead of ptrace? Ptrace can decrease process's performance significantly, for each system call, twice 
