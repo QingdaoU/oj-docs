@@ -2,12 +2,12 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Welcome to Online Judge\n\n\n\u76ee\u524d\u6b64\u5904\u7684\u6587\u6863\u5747\u4e3a\u672a\u516c\u5f00\u53d1\u5e03\u7248\u672c\u7684\uff0c\u6700\u65b0release\u7684\u7248\u672c\u8bf7\u53c2\u8003github\u3002\n\n\nhttps://github.com/QingdaoU\n\n\n\n\nHome\n\n\nJudger \n\n\nEnglish \n\n\nAPI\n\n\n\n\n\n\n\n\n\n\nJudgeServer \n\n\nEnglish \n\n\nAPI\n\n\nDeploy", 
+            "text": "Welcome to Online Judge\n\n\n\u76ee\u524d\u6b64\u5904\u7684\u6587\u6863\u5747\u4e3a\u672a\u516c\u5f00\u53d1\u5e03\u7248\u672c\u7684\uff0c\u6700\u65b0release\u7684\u7248\u672c\u8bf7\u53c2\u8003github\u3002\n\n\nhttps://github.com/QingdaoU\n\n\n\n\nHome\n\n\nJudger \n\n\nEnglish \n\n\nAPI\n\n\n\n\n\n\n\n\n\n\nJudgeServer \n\n\nEnglish \n\n\nAPI\n\n\nTestCase\n\n\nDeploy", 
             "title": "Home"
         }, 
         {
             "location": "/#welcome-to-online-judge", 
-            "text": "\u76ee\u524d\u6b64\u5904\u7684\u6587\u6863\u5747\u4e3a\u672a\u516c\u5f00\u53d1\u5e03\u7248\u672c\u7684\uff0c\u6700\u65b0release\u7684\u7248\u672c\u8bf7\u53c2\u8003github\u3002  https://github.com/QingdaoU   Home  Judger   English   API      JudgeServer   English   API  Deploy", 
+            "text": "\u76ee\u524d\u6b64\u5904\u7684\u6587\u6863\u5747\u4e3a\u672a\u516c\u5f00\u53d1\u5e03\u7248\u672c\u7684\uff0c\u6700\u65b0release\u7684\u7248\u672c\u8bf7\u53c2\u8003github\u3002  https://github.com/QingdaoU   Home  Judger   English   API      JudgeServer   English   API  TestCase  Deploy", 
             "title": "Welcome to Online Judge"
         }, 
         {
@@ -87,12 +87,12 @@
         }, 
         {
             "location": "/JudgeServer/", 
-            "text": "Table of contents\n\n\n\n\nJudgeServer \n\n\nEnglish \n\n\nAPI\n\n\nDeploy", 
+            "text": "Table of contents\n\n\n\n\nJudgeServer \n\n\nEnglish \n\n\nAPI\n\n\nTestCase\n\n\nDeploy", 
             "title": "index"
         }, 
         {
             "location": "/JudgeServer/#table-of-contents", 
-            "text": "JudgeServer   English   API  Deploy", 
+            "text": "JudgeServer   English   API  TestCase  Deploy", 
             "title": "Table of contents"
         }, 
         {
@@ -179,6 +179,26 @@
             "location": "/JudgeServer/English/#error-field-return-value", 
             "text": "SUCCESS = 0  INVALID_CONFIG = -1  CLONE_FAILED = -2  PTHREAD_FAILED = -3  WAIT_FAILED = -4  ROOT_REQUIRED = -5  LOAD_SECCOMP_FAILED = -6  SETRLIMIT_FAILED = -7  DUP2_FAILED = -8  SETUID_FAILED = -9  EXECVE_FAILED = -10  SPJ_ERROR = -11", 
             "title": "error field return value"
+        }, 
+        {
+            "location": "/JudgeServer/English/testcase/", 
+            "text": "Testcase format\n\n\nEach testcase directory contains its testcase files, the conetent of input files will be redirected to stdin, and stdout of process will be compared with output files(normal problem) or judged by your special judge code(special judge).\n\n\nTestcase meta data is in \ninfo\n file.\n\n\nNormal problem\n\n\nBoth input and output files are required.\n\n\nroot@JudgeServer:~/test_case/normal# tree\n.\n|-- 1.in\n|-- 1.out\n`-- info\n\n0 directories, 3 files\nroot@JudgeServer:~/test_case/normal# cat 1.in\n1 2\nroot@JudgeServer:~/test_case/normal# cat 1.out\n3\n\n\n\n\nExample of \ninfo\n file\n\n\n\n\nspj: for normal problem, it is \nfalse\n\n\ntest_cases: \nname\n - \ndata\n dict\n\n\nstriped_output_md5: md5 of output file which trailing empty characters has been removed\n\n\ninput_name and output_name: name of input and output file\n\n\ninput_size and output_size: size of input and output file\n\n\n\n\n\n\n\n\n{\n    \nspj\n: false,\n    \ntest_cases\n: {\n        \n1\n: {\n            \nstriped_output_md5\n: \neccbc87e4b5ce2fe28308fd9f2a7baf3\n,\n            \noutput_size\n: 2,\n            \ninput_name\n: \n1.in\n,\n            \ninput_size\n: 4,\n            \noutput_name\n: \n1.out\n\n        }\n    }\n}\n\n\n\n\n\nSpecial Judge\n\n\nYou only need input files.\n\n\nroot@JudgeServer:~/test_case/spj# tree\n.\n|-- 1.in\n`-- info\n\n0 directories, 3 files\nroot@JudgeServer:~/test_case/normal# cat 1.in\n1 2\n\n\n\n\nExample of \ninfo\n file\n\n\n\n\nspj: for special judge problem, it is \ntrue\n\n\ntest_cases: \nname\n - \ndata\n dict\n\n\ninput_name: name of input file\n\n\ninput_size: size of input file\n\n\n\n\n\n\n\n\n{\n    \nspj\n: true,\n    \ntest_cases\n: {\n        \n1\n: {\n            \ninput_name\n: \n1.in\n,\n            \ninput_size\n: 4\n        }\n    }\n}", 
+            "title": "TestCase"
+        }, 
+        {
+            "location": "/JudgeServer/English/testcase/#testcase-format", 
+            "text": "Each testcase directory contains its testcase files, the conetent of input files will be redirected to stdin, and stdout of process will be compared with output files(normal problem) or judged by your special judge code(special judge).  Testcase meta data is in  info  file.", 
+            "title": "Testcase format"
+        }, 
+        {
+            "location": "/JudgeServer/English/testcase/#normal-problem", 
+            "text": "Both input and output files are required.  root@JudgeServer:~/test_case/normal# tree\n.\n|-- 1.in\n|-- 1.out\n`-- info\n\n0 directories, 3 files\nroot@JudgeServer:~/test_case/normal# cat 1.in\n1 2\nroot@JudgeServer:~/test_case/normal# cat 1.out\n3  Example of  info  file   spj: for normal problem, it is  false  test_cases:  name  -  data  dict  striped_output_md5: md5 of output file which trailing empty characters has been removed  input_name and output_name: name of input and output file  input_size and output_size: size of input and output file     {\n     spj : false,\n     test_cases : {\n         1 : {\n             striped_output_md5 :  eccbc87e4b5ce2fe28308fd9f2a7baf3 ,\n             output_size : 2,\n             input_name :  1.in ,\n             input_size : 4,\n             output_name :  1.out \n        }\n    }\n}", 
+            "title": "Normal problem"
+        }, 
+        {
+            "location": "/JudgeServer/English/testcase/#special-judge", 
+            "text": "You only need input files.  root@JudgeServer:~/test_case/spj# tree\n.\n|-- 1.in\n`-- info\n\n0 directories, 3 files\nroot@JudgeServer:~/test_case/normal# cat 1.in\n1 2  Example of  info  file   spj: for special judge problem, it is  true  test_cases:  name  -  data  dict  input_name: name of input file  input_size: size of input file     {\n     spj : true,\n     test_cases : {\n         1 : {\n             input_name :  1.in ,\n             input_size : 4\n        }\n    }\n}", 
+            "title": "Special Judge"
         }, 
         {
             "location": "/JudgeServer/English/deploy/", 

@@ -9,11 +9,15 @@ with open("mkdocs_template.yml", "r") as f:
 def one(item, depth=0, result=""):
     for k, v in item.iteritems():
         if isinstance(v, basestring):
-            result += " ".join([" " * depth, "-", "[" + k + "](/" + v.rstrip("index.md").rstrip(".md") + ")\n"])
+            if v.endswith("index.md"):
+                v = v[:-7]
+            if v.endswith(".md"):
+                v = v[:-3]
+            result += " ".join([" " * depth, "-", "[" + k + "](/" + v + ")\n"])
         elif isinstance(v, list):
             result += " ".join([" " * depth, "-", k, "\n"])
             for v_item in v:
-                result += one(v_item, depth+4)
+                result += one(v_item, depth + 4)
     return result
 
 
