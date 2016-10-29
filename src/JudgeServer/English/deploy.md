@@ -5,11 +5,17 @@ Reuqirements:
   - docker >= 1.12
   - docker-compose >= 1.8
 
-Three environment variables below must be set manully in `docker-compose.yml`
+Docker images:
+
+  - docker pull qduoj/judge_server (from Docker Hub)
+  - docker pull registry.cn-hangzhou.aliyuncs.com/v-image/judge_server && docker tag registry.cn-hangzhou.aliyuncs.com/v-image/judge_server qduoj/judge_server (from Aliyun mirror)
+
+Three environment variables below must be set manually in `docker-compose.yml`
  
   - `service_discovery_url`
-  - `judger_token`
   - `service_url`
+
+You should manually create `token.txt` to store `judger_token`.
 
 `judge_server` will send heartbeat request to `service_discovery_url` every five seconds.
   
@@ -21,7 +27,7 @@ Example of `docker-compose.yml`
 version: "2"
 services:
     judge_server:
-        image: judge_server
+        image: qduoj/judge_server
         cpu_quota: 90000
         read_only: true
         cap_drop:
@@ -36,11 +42,11 @@ services:
             - /judger_run:exec,mode=777
             - /spj:exec,mode=777
         volumes:
-            - /data/JudgeServer/tests/test_case:/test_case:ro
+            - $PWD/tests/test_case:/test_case:ro
             - /data/log:/log
-            - /data/JudgeServer:/code:ro
+            - $PWD/server:/code:ro
+            - $PWD/token.txt:/token.txt
         environment:
-            - judger_token=token
             - service_discovery_url=https://virusdefender.net/service.php
             - service_url=http://1.2.3.4:12358
         ports:
