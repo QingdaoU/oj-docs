@@ -166,7 +166,7 @@
         
             <li><a href="#struct-result-members">struct result members</a></li>
         
-            <li><a href="#python-binding-python-27-only">Python binding (Python 2.7 only)</a></li>
+            <li><a href="#python-binding-python-27-and-35">Python binding (Python 2.7 and 3.5)</a></li>
         
             <li><a href="#run-tests">Run tests</a></li>
         
@@ -192,6 +192,7 @@ mkdir build &amp;&amp; cd build &amp;&amp; cmake .. &amp;&amp; make &amp;&amp; s
 <li><code>max_cpu_time</code> (ms):  max cpu time this process can cost, -1 for unlimited</li>
 <li><code>max_real_time</code> (ms):  max time this process can run, -1 for unlimited</li>
 <li><code>max_memory</code> (byte):  max size of the process's virtual memory (address space), -1 for unlimited</li>
+<li><code>max_stack</code> (byte):  max size of the process's stack size</li>
 <li><code>max_process_number</code>:  max number of child process this process can create (to avoid fork bomb), -1 for unlimited</li>
 <li><code>max_output_size</code> (byte):  max size of data this process can output to stdout, stderr and file, -1 for unlimited</li>
 <li><code>exe_path</code>:  path of file to run</li>
@@ -239,7 +240,7 @@ mkdir build &amp;&amp; cd build &amp;&amp; cmake .. &amp;&amp; make &amp;&amp; s
 <li>EXECVE_FAILED = -10</li>
 <li>SPJ_ERROR = -11 (judger module will never return this value, it's used for awswer checker)</li>
 </ul>
-<h2 id="python-binding-python-27-only">Python binding (Python 2.7 only)</h2>
+<h2 id="python-binding-python-27-and-35">Python binding (Python 2.7 and 3.5)</h2>
 <pre><code>sudo python setup.py install
 </code></pre>
 
@@ -252,9 +253,10 @@ mkdir build &amp;&amp; cd build &amp;&amp; cmake .. &amp;&amp; make &amp;&amp; s
 
 &gt;&gt;&gt; _judger.run(max_cpu_time=1000,
 ...             max_real_time=2000,
-...             max_memory=1000000000,
+...             max_memory=128 * 1024 * 1024,
 ...             max_process_number=200,
 ...             max_output_size=10000,
+...             max_stack=32 * 1024 * 1024,
 ...             # five args above can be _judger.UNLIMITED
 ...             exe_path=&quot;/bin/echo&quot;,
 ...             input_path=&quot;/dev/null&quot;,
