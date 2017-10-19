@@ -15,9 +15,9 @@ mkdir build && cd build && cmake .. && make && sudo make install
 
  - `max_cpu_time` (ms):  max cpu time this process can cost, -1 for unlimited
  - `max_real_time` (ms):  max time this process can run, -1 for unlimited
- - `max_memory` (byte):  max size of the process's virtual memory (address space), -1 for unlimited
- - `max_stack` (byte):  max size of the process's stack size
- - `max_process_number`:  max number of child process this process can create (to avoid fork bomb), -1 for unlimited
+ - `max_memory` (byte):  max size of the process' virtual memory (address space), -1 for unlimited
+ - `max_stack` (byte):  max size of the process' stack size
+ - `max_process_number`:  max number of processes that can be created for the real user id of the calling process, -1 for unlimited
  - `max_output_size` (byte):  max size of data this process can output to stdout, stderr and file, -1 for unlimited
  - `exe_path`:  path of file to run
  - `input_file`:  redirect content of this file to process's stdin

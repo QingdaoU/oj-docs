@@ -191,9 +191,9 @@ mkdir build &amp;&amp; cd build &amp;&amp; cmake .. &amp;&amp; make &amp;&amp; s
 <ul>
 <li><code>max_cpu_time</code> (ms):  max cpu time this process can cost, -1 for unlimited</li>
 <li><code>max_real_time</code> (ms):  max time this process can run, -1 for unlimited</li>
-<li><code>max_memory</code> (byte):  max size of the process's virtual memory (address space), -1 for unlimited</li>
-<li><code>max_stack</code> (byte):  max size of the process's stack size</li>
-<li><code>max_process_number</code>:  max number of child process this process can create (to avoid fork bomb), -1 for unlimited</li>
+<li><code>max_memory</code> (byte):  max size of the process' virtual memory (address space), -1 for unlimited</li>
+<li><code>max_stack</code> (byte):  max size of the process' stack size</li>
+<li><code>max_process_number</code>:  max number of processes that can be created for the real user id of the calling process, -1 for unlimited</li>
 <li><code>max_output_size</code> (byte):  max size of data this process can output to stdout, stderr and file, -1 for unlimited</li>
 <li><code>exe_path</code>:  path of file to run</li>
 <li><code>input_file</code>:  redirect content of this file to process's stdin</li>
