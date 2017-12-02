@@ -25,10 +25,6 @@ b6fc725b2417        registry.docker-cn.com/library/redis:4.0-alpine             
 
 查看docker-compose.yml中文件映射的路径是否有误，冒号前面应该是服务器上实际的路径，冒号后面的不需要修改。
 
-## 提交一直是waiting的状态
-
-在`dockerfiles/judger`目录运行`docker-compose restart`
-
 ## 在启动容器的时候 ERROR: client and server don't have same version
 
 请升级`docker-compose`至最新版
@@ -50,4 +46,8 @@ b6fc725b2417        registry.docker-cn.com/library/redis:4.0-alpine             
 
 ## Invalid token
 
- - 请查看admin界面上判题服务器的密码和judger的docker-compose.yml中的rpc_token是否完全一致
+请查看`docker-compose.yml`内的`JUDGE_SERVER_TOKEN`与`TOKEN`是否一致
+
+## 我的浏览器不显示数据或者显示异常
+
+请使用chronme或firefox使用本OJ
