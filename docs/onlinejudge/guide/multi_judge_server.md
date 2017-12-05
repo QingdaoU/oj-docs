@@ -55,7 +55,7 @@ services:
       - /judger_run:exec,mode=777
       - /spj:exec,mode=777
     volumes:
-      - $PWD/data/backend/test_case:/test_case:ro
+      - $PWD/data/test_case:/test_case:ro
       - $PWD/data/judge_server:/log
     environment:
       - service_url=http://judge-server:8080
@@ -67,8 +67,8 @@ services:
   oj-rsync-slave:
     image: registry.cn-hangzhou.aliyuncs.com/onlinejudge/oj_rsync
     volumes:
-      - $PWD/test_case:/test_case
-      - $PWD/rsync_slave:/log
+      - $PWD/data/test_case:/test_case
+      - $PWD/data/rsync_slave:/log
     environment:
       - RSYNC_MODE=slave
       - RSYNC_USER=ojrsync
