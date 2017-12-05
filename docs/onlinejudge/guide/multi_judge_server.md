@@ -65,7 +65,7 @@ services:
       - "0.0.0.0:12358:8000"
 
   oj-rsync-slave:
-    image: oj-rsync
+    image: registry.cn-hangzhou.aliyuncs.com/onlinejudge/oj_rsync
     volumes:
       - $PWD/test_case:/test_case
       - $PWD/rsync_slave:/log
