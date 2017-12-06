@@ -34,6 +34,7 @@ mkdir build && cd build && cmake .. && make && sudo make install
 
  - `cpu_time`:  cpu time the process has used
  - `real_time`:  actual running time of the process
+ - `real_time`:  max vaule of memory used by the processd
  - `signal`:  signal number
  - `exit_code`:  process's exit code
  - `result`:  judger result, details in `runner.h`
