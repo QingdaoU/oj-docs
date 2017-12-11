@@ -64,7 +64,7 @@ cp -r data data_bak
 
 ### 运行导入脚本
 
-将上述`old_data.json` 弄到2.0的机器上，确保当前目录下有`old_data.json`这个文件，然后依次运行:
+将上述`old_data.json` 复制到2.0的机器上，确保当前目录下有`old_data.json`这个文件，然后依次运行:
 
 ```bash
 docker cp old_data.json oj-backend:/app/utils/ 
