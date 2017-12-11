@@ -4,7 +4,7 @@
 
 # 升级步骤
 
-!> 一下方法仅适用于用官方[部署脚本](https://github.com/QingdaoU/OnlineJudgeDeploy)搭建的OJ
+!> 以下方法仅适用于用官方[部署脚本](https://github.com/QingdaoU/OnlineJudgeDeploy)搭建的OJ
 
 如果对部署仓库代码有改动，请自行备份或`git stash`,然后在 OnlineJudgeDeploy目录运行下列命令即可完成升级：
 
