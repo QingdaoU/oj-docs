@@ -130,6 +130,10 @@ cd tests &&  sudo python test.py
  context switch between child process and parent process is needed.
  - How to custom seccomp rule? [Example here](https://github.com/QingdaoU/Judger/blob/newnew/src/rules/c_cpp.c).
  
+## Known issues
+
+ - Parent process' memory usage will affect child process' memory usage data
+ 
 ## License
 
   The Star And Thank Author License (SATA)
