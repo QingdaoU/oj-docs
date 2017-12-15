@@ -1,6 +1,6 @@
 # 内网运行的问题
 
-OJ的MathJax是从cdn加载的，因此若是在网络隔离的环境运行，将无法无法使用MathJax显示数学公式
+OJ的MathJax是从cdn加载的，因此若是在网络隔离的环境运行，将无法使用MathJax显示数学公式
 
 > 为何不将Mathjax打包进OJ?
 >

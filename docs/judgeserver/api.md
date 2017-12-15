@@ -24,7 +24,6 @@
 {
     "judger_version": "2.0.1",
     "hostname": "d3765528134e",
-    "running_task_number": 2,
     // number of cpu cores, this value will determine the number of concurrent tasks
     "cpu_core": 1,
     // usage of cpu and memory
