@@ -45,7 +45,7 @@ If everything is OK, you should give a JSON response as follows
 ```js
 {
     "data": "success",
-    "err": null
+    "error": null
 }
 ```
 
