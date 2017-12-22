@@ -1,6 +1,6 @@
 ## MathJax 基础
 
-编辑器中可以插入MathJax公式，行内公式请使用两个`$`包裹公式，单行公式使用两个`$$`。比如
+编辑器中可以插入 MathJax 公式，行内公式请使用两个`$`包裹公式，单行公式使用两个`$$`。比如
 
 ```
 When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
