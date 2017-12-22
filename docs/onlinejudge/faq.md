@@ -50,4 +50,4 @@ b6fc725b2417        registry.docker-cn.com/library/redis:4.0-alpine             
 
 ## 我的浏览器不显示数据或者显示异常
 
-请使用chronme或firefox使用本OJ
+请使用 Chrome 或 Firefox 使用本OJ，如不能解决，请反馈问题
