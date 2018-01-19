@@ -9,4 +9,5 @@
 
 
 [GitHub](https://github.com/QingdaoU/OnlineJudge)
+[Demo](https://qduoj.com)
 [Get Started](/#/onlinejudge/guide/deploy)
