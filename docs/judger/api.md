@@ -124,7 +124,7 @@ cd tests &&  sudo python test.py
 
  - Linux x64 and kernel version > 3.17 required
  - Judger security relies on Docker with default security config [More](https://github.com/QingdaoU/JudgeServer/blob/master/docker-compose.example.yml)
- - Tested under Ubuntu 14.04 docker container. System calls may vary due to different system and kernel versions
+ - Tested under Ubuntu docker container. System calls may vary due to different system and kernel versions
  - Root user required to change uid / gid
  - Why use seccomp instead of ptrace? Ptrace can decrease process's performance significantly, for each system call, twice 
  context switch between child process and parent process is needed.
@@ -132,7 +132,7 @@ cd tests &&  sudo python test.py
  
 ## Known issues
 
- - Parent process' memory usage will affect child process' memory usage data
+ - Parent process' memory usage will affect child process' memory usage data [ref1](http://marklux.cn/blog/73) [ref2](https://github.com/QingdaoU/Judger/blob/newnew/bindings/Python/_judger/__init__.py)
  
 ## License
 
