@@ -9,9 +9,9 @@ OnlineJudge 的部署脚本默认情况下会生成一个自签名证书，浏�
 
 ## 申请 HTTPS 证书
 
-`/.well-known` 的 url 前缀，会自动使用 `data/ssl/.well-known` 目录下面的文件，默认情况下 `data/ssl/` 已经存在，所以可以手动的创建 `.well-known` 及其子文件夹，比如需要 url 为 `/.well-known/pki-validation/fileauth.txt` 的验证文件，就可以创建 `data/ssl/.well-known/pki-validation/fileauth.txt` 文件，内容为指定的内容。
+`/.well-known` 的 url 前缀，会自动使用 `data/backend/ssl/.well-known` 目录下面的文件，默认情况下 `data/backend/ssl/` 已经存在，所以可以手动的创建 `.well-known` 及其子文件夹，比如需要 url 为 `/.well-known/pki-validation/fileauth.txt` 的验证文件，就可以创建 `data/backend/ssl/.well-known/pki-validation/fileauth.txt` 文件，内容为指定的内容。
 
-然后替换 `data/ssl/` 下面的证书和私钥文件。
+然后替换 `data/backend/ssl/` 下面的证书和私钥文件，之后 `docker exec -it oj-backend sh -c "cd /app/deploy; supervisorctl restart nginx"`。
 
 ## FORCE_HTTPS
 
