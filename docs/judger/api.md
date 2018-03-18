@@ -63,7 +63,7 @@ mkdir build && cd build && cmake .. && make && sudo make install
   - EXECVE_FAILED = -10
   - SPJ_ERROR = -11 (judger module will never return this value, it's used for awswer checker)
  
-## Python binding (Python 2.7 and 3.5)
+## Python binding (Python 2.7 and 3.5+)
 
 ```
 sudo python setup.py install

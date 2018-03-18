@@ -1,4 +1,4 @@
-## 查看Docker容器运行状态
+## 查看 Docker 容器运行状态
 
 运行`docker ps -a`，可以看到以下输出。
 
@@ -29,6 +29,14 @@ b6fc725b2417        registry.docker-cn.com/library/redis:4.0-alpine             
 ## Invalid token
 
 请查看`docker-compose.yml`内的`JUDGE_SERVER_TOKEN`与`TOKEN`是否一致
+
+## Java语言全部 RE
+
+因为 Java 的内存分配机制的问题，题目内存过小会导致 jvm 无法启动，请暂时提高题目内存或者禁用 Java 语言。OnlineJudge 后续会优化这一点。
+
+## 80 或者 443 端口被占用导致 docker 无法启动
+
+修改 docker-compose 中 `ports` 相关的配置，比如 `0.0.0.0:80:8080` 可以修改为 `0.0.0.0:8020:8080`，冒号后面的端口号不会冲突请勿改动。
 
 ## 我的浏览器不显示数据或者显示异常
 

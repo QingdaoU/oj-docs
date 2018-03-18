@@ -23,6 +23,6 @@
   - [Deploy](judgeserver/deploy.md)
   - [TestCase](judgeserver/testcase.md)
 
-- [Judger](judger/)
+- Judger
 
   - [API](judger/api.md)
