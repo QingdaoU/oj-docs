@@ -26,3 +26,4 @@
 - Judger
 
   - [API](judger/api.md)
+  - [工作原理](judger/how_it_works.md)

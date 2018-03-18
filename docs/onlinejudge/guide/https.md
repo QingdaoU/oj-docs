@@ -16,4 +16,3 @@ OnlineJudge 的部署脚本默认情况下会生成一个自签名证书，浏�
 ## FORCE_HTTPS
 
 如果 HTTPS 配置成功，为了增强安全性，推荐重定向 HTTP 流量到 HTTPS 流量，这时候可以取消注释 `docker-compose.yml` 文件中的 `FORCE_HTTPS=1` 这一行，然后 `docker-compose up -d` 重启即可。
-
