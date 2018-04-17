@@ -1,3 +1,8 @@
+## CentOS 上部署遇到问题
+
+ - 检查 docker 版本是否太老
+ - 关闭 SELinux
+  
 ## 查看 Docker 容器运行状态
 
 运行`docker ps -a`，可以看到以下输出。
