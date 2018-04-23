@@ -1,3 +1,12 @@
+## 有 docker hub 的镜像么
+
+有 https://hub.docker.com/u/qduoj/
+
+## smtp 配置不成功
+
+ - OnlineJudge 不支持 ssl，请使用 tls，比如 qq 邮箱是 smtp.qq.com / tls / port 25
+ - 部分邮箱 smtp 密码不是登录密码，而是单独的授权密码
+
 ## CentOS 上部署遇到问题
 
  - 检查 docker 版本是否太老
@@ -35,11 +44,9 @@ b6fc725b2417        registry.docker-cn.com/library/redis:4.0-alpine             
 
 请查看`docker-compose.yml`内的`JUDGE_SERVER_TOKEN`与`TOKEN`是否一致
 
-## Java语言全部 RE
-
-因为 Java 的内存分配机制的问题，题目内存过小会导致 jvm 无法启动，请暂时提高题目内存或者禁用 Java 语言。OnlineJudge 后续会优化这一点。
-
 ## 80 或者 443 端口被占用导致 docker 无法启动
+
+错误信息 `bind 0.0.0.0:80 failed, port is already allocated`
 
 修改 docker-compose 中 `ports` 相关的配置，比如 `0.0.0.0:80:8080` 可以修改为 `0.0.0.0:8020:8080`，冒号后面的端口号不会冲突请勿改动。
 
