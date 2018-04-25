@@ -7,6 +7,12 @@ sudo apt-get install libseccomp-dev
 mkdir build && cd build && cmake .. && make && sudo make install
 ```
 
+`libjudger.so` is built in both executable and library format.
+
+## Command Line
+
+`./libjudger.so --help` shows the usage
+
 ## C API
 
 `#include <runner.h>` then call `run` function with `struct config` and `struct result` pointer.
@@ -19,6 +25,7 @@ mkdir build && cd build && cmake .. && make && sudo make install
  - `max_stack` (byte):  max size of the process' stack size
  - `max_process_number`:  max number of processes that can be created for the real user id of the calling process, -1 for unlimited
  - `max_output_size` (byte):  max size of data this process can output to stdout, stderr and file, -1 for unlimited
+ - `memory_limit_check_only`: if this value equals `0`, we will only check memory usage number, because setrlimit(maxrss) will cause some crash issues
  - `exe_path`:  path of file to run
  - `input_file`:  redirect content of this file to process's stdin
  - `output_file`:  redirect process's stdout to this file
@@ -34,7 +41,7 @@ mkdir build && cd build && cmake .. && make && sudo make install
 
  - `cpu_time`:  cpu time the process has used
  - `real_time`:  actual running time of the process
- - `real_time`:  max vaule of memory used by the processd
+ - `memory`:  max vaule of memory used by the process
  - `signal`:  signal number
  - `exit_code`:  process's exit code
  - `result`:  judger result, details in `runner.h`
