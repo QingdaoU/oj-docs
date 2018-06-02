@@ -8,7 +8,6 @@
     - [Special Judge](onlinejudge/guide/special_judge.md)
     - [MathJax](onlinejudge/guide/mathjax.md)
     - [多个评测机](onlinejudge/guide/multi_judge_server.md)
-    - [内网运行的问题](onlinejudge/guide/intranet_problems.md)
     - [代码升级说明](onlinejudge/guide/upgrade.md)
     - [HTTPS相关问题](onlinejudge/guide/https.md)
     - [使用CDN](onlinejudge/guide/using_cdn.md)
