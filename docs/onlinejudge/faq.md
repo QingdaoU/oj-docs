@@ -7,6 +7,17 @@
  - OnlineJudge 不支持 ssl，请使用 tls，比如 qq 邮箱是 smtp.qq.com / tls / port 25
  - 部分邮箱 smtp 密码不是登录密码，而是单独的授权密码
 
+## 忘记用户密码
+
+ - 网页上找回密码
+ - 后台用户管理重置
+ - 超级管理员等密码也忘记，可以使用下面的命令
+
+```
+docker exec -it oj-backend /bin/sh
+python3 manage.py inituser --username USERNAME --password NEW_PASSWORD --action=reset
+```
+
 ## CentOS 上部署遇到问题
 
  - 检查 docker 版本是否太老
