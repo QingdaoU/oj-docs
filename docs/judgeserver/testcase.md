@@ -26,7 +26,7 @@ Example of `info` file
 
  - spj: for normal problem, it is `false`
  - test_cases: `name` - `data` dict
-     - striped_output_md5: md5 of output file which trailing empty characters has been removed
+     - stripped_output_md5: md5 of output file which trailing empty characters has been removed
      - input_name and output_name: name of input and output file
      - input_size and output_size: size of input and output file
 
@@ -35,7 +35,7 @@ Example of `info` file
     "spj": false,
     "test_cases": {
         "1": {
-            "striped_output_md5": "eccbc87e4b5ce2fe28308fd9f2a7baf3",
+            "stripped_output_md5": "eccbc87e4b5ce2fe28308fd9f2a7baf3",
             "output_size": 2,
             "input_name": "1.in",
             "input_size": 4,
