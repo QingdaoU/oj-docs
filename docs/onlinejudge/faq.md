@@ -64,3 +64,9 @@ b6fc725b2417        registry.docker-cn.com/library/redis:4.0-alpine             
 ## 我的浏览器不显示数据或者显示异常
 
 请使用 Chrome 或 Firefox 使用本OJ，如不能解决，请反馈问题。
+
+## 如何解决 oj 上运行错误但是本地成功的问题
+
+ - 90% 的可能性是代码的bug，本地没有触发，尤其是是本地没有完整测试数据和相同的运行环境的情况下。
+ - 如果是 `Runtime Error`，可能是代码运行过程中 crash，如果提示 `signal=31`，可能是触发了禁止使用的系统调用。通过 `dmesg` 可以看到系统调用号。
+ - 如果实在想看到代码运行结果，可以修改 `docker-compose.yml`，去除 `judger_debug=1` 的注释，然后 `docker-compose up -d`。重新提交之后，`docker exec -it judge-server bash` `cd /judger/run` 就可以看到很多文件夹了，可以找到自己的代码和运行结果。调试完请注释这一行并重新 `up -d`，否则每次的运行结果都会保留。
