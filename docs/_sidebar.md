@@ -12,6 +12,7 @@
     - [HTTPS相关问题](onlinejudge/guide/https.md)
     - [使用CDN](onlinejudge/guide/using_cdn.md)
     - [数据备份](onlinejudge/guide/backup.md)
+    - [修改前端](onlinejudge/guide/update_fe.md)
   - [常见问题](onlinejudge/faq.md)
   - [交流群](onlinejudge/guide/qq_group.md)
   - [从旧版迁移](onlinejudge/from_old.md)
