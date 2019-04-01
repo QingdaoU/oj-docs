@@ -8,4 +8,4 @@
 
 ## 赞助我们
 
-<img src="https://user-images.githubusercontent.com/4939404/35159696-02000c44-fd76-11e7-94d4-f00773ac1901.jpg" style="width: 40%; height: 40%">
+<img src="https://storage.virusdefender.net/blog/images/utils/wx_pay_new.JPG" style="width: 40%; height: 40%">
