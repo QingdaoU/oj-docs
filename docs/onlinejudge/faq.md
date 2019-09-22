@@ -78,6 +78,6 @@ b6fc725b2417        registry.docker-cn.com/library/redis:4.0-alpine             
  - 机器配置较高，比如 CPU 超过 4 核或内存超过 4G
  - 后端报错数据库连接数不够 `too many clients already`
 
- 请参考 https://pgtune.leopard.in.ua 选择 DB Version 10，Number of Connections 为 20倍 CPU 核数，其他的参数按照实际情况填写。
+ 请参考 https://pgtune.leopard.in.ua 选择 DB Version 10，Number of Connections 为 20 倍 CPU 核数，其他的参数按照实际情况填写。
 
- 然后将右侧的参数更新到 `OnlineJudgeDeploy/OnlineJudgeDeploy/data/postgres/postgresql.conf` 文件中，然后 `docker-compose up -d` 即可。
+ 然后将右侧的参数更新到 `OnlineJudgeDeploy/OnlineJudgeDeploy/data/postgres/postgresql.conf` 文件中，注意原先配置部分是注释掉的，需要将开头的 `#` 删除，`docker-compose restart oj-postgres` 即可。
