@@ -1,3 +1,16 @@
+- Guide
+  - [Installation](en/guide/installation.md)
+  - [Configuration](en/guide/configuration.md)
+  - [Customize Judge Environment](en/guide/judge_language_customization.md)
+- Management
+  - [Backup & Restore](en/management/backup_and_restore.md)
+- Development
+  - [Architecture](en/development/architecture.md)
+  - [Build](en/development/build.md)
+  - [Contributor](en/development/contributor.md)
+
+---
+
 - 用户指南
   - [部署](onlinejudge/guide/deploy.md)
   - [测试用例格式](onlinejudge/guide/test_case.md)

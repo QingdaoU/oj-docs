@@ -15,7 +15,7 @@
 </head>
 <body>
   <div id="app"></div>
-  <script src="//cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.min.js"></script>
   <script>
     let num = 0;
     mermaid.initialize({ startOnLoad: false });
@@ -29,15 +29,26 @@
       },
       markdown: {
         renderer: {
-          code: function(code, lang) {
+          code(code, lang) {
+            // thanks https://github.com/HugoDF/docsify-mermaid-10
             if (lang === "mermaid") {
-              return (
-                '<div class="mermaid">' + mermaid.render('mermaid-svg-' + num++, code) + "</div>"
-              );
+              const svgName = `mermaid-svg-${num++}`;
+              const MERMAID_CONTAINER_ID = `${svgName}-container`;
+              mermaid.render(svgName, code).then(({ svg }) => {
+                const containerElement = document.querySelector(
+                  `#${MERMAID_CONTAINER_ID}`
+                );
+                if (containerElement) {
+                  containerElement.innerHTML = svg;
+                } else {
+                  console.error(`Error: #${MERMAID_CONTAINER_ID} not found`);
+                }
+              });
+              return `<div class="mermaid" id="${MERMAID_CONTAINER_ID}"></div>`;
             }
             return this.origin.code.apply(this, arguments);
-          }
-        }
+          },
+        },
       },
     };
   </script>
