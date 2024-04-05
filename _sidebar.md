@@ -4,6 +4,7 @@
   - [Judge Environment](en/guide/judge_environment.md)
 - Management
   - [Backup & Restore](en/management/backup_and_restore.md)
+  - [Upgrade](en/management/upgrade.md)
 - Development
   - [Architecture](en/development/architecture.md)
   - [Build](en/development/build.md)
