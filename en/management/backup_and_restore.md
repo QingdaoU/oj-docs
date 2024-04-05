@@ -20,7 +20,7 @@
   zstd -d "<backup file>" | docker compose exec postgres psql
   ```
 
-## Test case
+## Testcase
 
 - backup
 
