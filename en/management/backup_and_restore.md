@@ -5,16 +5,16 @@
 - backup
 
   ```bash
-  docker compose exec postgres pg_dumpall -c -U onlinejudge > "db-$(date -Iseconds).sql"
+  docker compose exec -T oj-postgres pg_dumpall -c -U onlinejudge > "db-$(date -Iseconds).sql"
 
   # zstd
-  docker compose exec postgres pg_dumpall -c -U onlinejudge | zstd -o "db-$(date -Iseconds).sql.zst"
+  docker compose exec -T oj-postgres pg_dumpall -c -U onlinejudge | zstd -o "db-$(date -Iseconds).sql.zst"
   ```
 
 - restore
 
   ```bash
-  docker compose exec postgres psql < "<backup file>"
+  docker compose exec -T oj-postgres psql < "<backup file>"
 
   # zstd
   zstd -d "<backup file>" | docker compose exec postgres psql

@@ -34,7 +34,7 @@
 5. Overwrite judge language config in database from mounted languages.py
 
    ```bash
-   docker compose exec oj-backend python manage.py shell <<EOF
+   docker compose exec -T oj-backend python manage.py shell <<EOF
    from options.options import SysOptions
    SysOptions.reset_languages()
    EOF
