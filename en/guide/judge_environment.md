@@ -1,14 +1,23 @@
-# Judge Language Customization
+# Judge Environment
 
-1. Build custom judge server container image
+- C (GCC 13)
+- C++ (GCC 13)
+- Java (Temurin 21)
+- Python3 (CPython 3.12)
+- Go (Go 1.22)
+- JavaScript (Node.js 20)
+
+## Customization
+
+1. [Optional] Build custom judge server container image
 
    If you don't need to modify judge environment, you can skip this step.
 
    ```bash
    git clone https://github.com/QingdaoU/JudgeServer.git
    cd JudgeServer
-   # modify
-   docker buildx build . -t oj-judge --load
+   # modify something...
+   docker buildx build . -t oj-image/judge --load
    ```
 
 2. Download [languages.py](https://raw.githubusercontent.com/QingdaoU/OnlineJudge/master/judge/languages.py) to the deploy folder.

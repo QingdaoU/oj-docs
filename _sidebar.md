@@ -1,7 +1,7 @@
 - Guide
   - [Installation](en/guide/installation.md)
   - [Configuration](en/guide/configuration.md)
-  - [Customize Judge Environment](en/guide/judge_language_customization.md)
+  - [Judge Environment](en/guide/judge_environment.md)
 - Management
   - [Backup & Restore](en/management/backup_and_restore.md)
 - Development
