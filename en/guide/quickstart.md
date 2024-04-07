@@ -1,4 +1,4 @@
-# Installation
+# Quickstart
 
 ## Requirements
 
@@ -16,10 +16,10 @@
 1. Get necessary files from [QingdaoU/OnlineJudgeDeploy](https://github.com/QingdaoU/OnlineJudgeDeploy) releases.
 
    ```bash
-   git clone -b v1.6.0 https://github.com/QingdaoU/OnlineJudgeDeploy.git
+   git clone -b v1.6.1 https://github.com/QingdaoU/OnlineJudgeDeploy.git
    ```
 
-2. Pull and start containers.
+2. Pull and start services.
 
    ```bash
    docker compose up -d

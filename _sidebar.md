@@ -1,5 +1,5 @@
 - Guide
-  - [Installation](en/guide/installation.md)
+  - [Quickstart](en/guide/quickstart.md)
   - [Configuration](en/guide/configuration.md)
   - [Judge Environment](en/guide/judge_environment.md)
 - Management
