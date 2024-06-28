@@ -14,10 +14,10 @@
 - restore
 
   ```bash
-  docker compose exec -T oj-postgres psql < "<backup file>"
+  docker compose exec -T oj-postgres psql -U onlinejudge < "<backup file>"
 
   # zstd
-  zstd -d "<backup file>" | docker compose exec postgres psql
+  zstd -d "<backup file>" | docker compose exec postgres psql -U onlinejudge
   ```
 
 ## Testcase
